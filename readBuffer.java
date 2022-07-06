@@ -1,13 +1,11 @@
-package multihreads;
-
 import java.security.SecureRandom;
 
 public class readBuffer implements Runnable{
   private static final SecureRandom
   generator = new SecureRandom();
-  private final buffer sharedLocation;
+  private final Buffer sharedLocation;
 
-  public readBuffer(buffer sharedLocation){
+  public readBuffer(Buffer sharedLocation){
     this.sharedLocation = sharedLocation;
   }
   public void run(){
@@ -18,7 +16,7 @@ public class readBuffer implements Runnable{
         sum += sharedLocation.getBuffer();
         System.out.printf("\t\t\t%2d%n", sum);
       }
-      catch(InterreruptedException e){
+      catch(InterruptedException e){
         Thread.currentThread().interrupt();
       }
     }

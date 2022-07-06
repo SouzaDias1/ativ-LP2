@@ -1,10 +1,8 @@
-
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class Main {
+public class MainMultiThreads{
 
 	public static void main(String[] args) throws InterruptedException {
 		
@@ -17,12 +15,12 @@ public class Main {
 		);
 
 		System.out.println("-------------------------------------------------------------------------------------");
-		threadRun.execute(new WriteBuffer(sharedLocation));
-		threadRun.execute(new ReadBuffer(sharedLocation));
-		threadRun.execute(new WriteBufferDoubleArray(sharedLocation));
-		threadRun.execute(new ReadBufferDoubleArray(sharedLocation));
-		threadRun.execute(new WriteBufferStringArray(sharedLocation));
-		threadRun.execute(new ReadBufferStringArray(sharedLocation));
+		threadRun.execute(new writeBuffer(sharedLocation));
+		threadRun.execute(new readBuffer(sharedLocation));
+		threadRun.execute(new writeBufferDouble (sharedLocation));
+		threadRun.execute(new readBufferDouble (sharedLocation));
+		threadRun.execute(new writeBufferString (sharedLocation));
+		threadRun.execute(new readBufferString (sharedLocation));
 		threadRun.shutdown();
 		threadRun.awaitTermination(1, TimeUnit.MINUTES);
 		System.out.println("-------------------------------------------------------------------------------------");

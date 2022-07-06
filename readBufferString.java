@@ -1,10 +1,10 @@
 import java.security.SecureRandom;
-
-public class writeBuffer implements Runnable{
-	private static final SecureRandom 
+public class readBufferString implements Runnable{
+	private static final SecureRandom
 	generator = new SecureRandom();
-	private final Buffer sharedLocation;	
-	public writeBuffer(Buffer sharedLocation) {
+	private final Buffer sharedLocation;
+
+	public readBufferString(Buffer sharedLocation) {
 		this.sharedLocation = sharedLocation;
 	}
 	public void run() {
@@ -12,16 +12,16 @@ public class writeBuffer implements Runnable{
 		for (int count =1;count <=10;count ++) {
 			try {
 				Thread.sleep(generator.nextInt(3000));
-				sharedLocation.putBuffer(count);
-				sum+=count;
-				System.out.printf("\t\t\t%2d\n",sum);
+				sum += sharedLocation.getBufferString();
+				System.out.printf("\t\t\t\t\t\t%d\n",sum);
 				}
 			catch(InterruptedException e){
 				Thread.currentThread().interrupt();				
 			}			
 		}
 		System.out.printf("%n%s %d%n%s%n",
-				"Escrita do total de valores: ",
-				sum, "Escrita finalizada!");
+				"Leitura do total de valores: ", 
+				sum, "Leitura finalizada!");
 	}
+
 }
