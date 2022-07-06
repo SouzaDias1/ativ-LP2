@@ -1,7 +1,5 @@
 package multihreads;
-
-public class buffer {
-    public void putbuffer(int value) 
-        throws InterruotedException;
-    public int getbuffer() throws InterruotedException;
+public interface Buffer {
+	public void putBuffer(int value) throws InterruptedException;
+	public int getBuffer() throws InterruptedException;
 }
