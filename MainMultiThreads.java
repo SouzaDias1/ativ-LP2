@@ -19,6 +19,10 @@ public class Main {
 		System.out.println("-------------------------------------------------------------------------------------");
 		threadRun.execute(new WriteBuffer(sharedLocation));
 		threadRun.execute(new ReadBuffer(sharedLocation));
+		threadRun.execute(new WriteBufferDoubleArray(sharedLocation));
+		threadRun.execute(new ReadBufferDoubleArray(sharedLocation));
+		threadRun.execute(new WriteBufferStringArray(sharedLocation));
+		threadRun.execute(new ReadBufferStringArray(sharedLocation));
 		threadRun.shutdown();
 		threadRun.awaitTermination(1, TimeUnit.MINUTES);
 		System.out.println("-------------------------------------------------------------------------------------");
